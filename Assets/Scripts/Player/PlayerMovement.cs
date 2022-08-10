@@ -4,6 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     #region Variables
 
+    public bool isCutting = false;
+
     public float speed;
     [SerializeField] private FloatingJoystick floatingJoystick;
     [SerializeField] private Rigidbody playerRigidBody;
@@ -44,8 +46,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _prevTargetAngle = angle;
+        if(!isCutting)
+        {
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
         
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
     
     #endregion
