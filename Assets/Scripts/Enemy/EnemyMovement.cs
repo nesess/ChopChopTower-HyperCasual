@@ -7,9 +7,7 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     [SerializeField] private Rigidbody enemyRigidBody;
     public Transform targetTransform;
-
-    [Range(0f, 1f)] public float duration;
-
+    
     private float _turnSmoothVelocity;
     public float smoothTime = .1f;
     private float _prevTargetAngle;
@@ -18,13 +16,11 @@ public class EnemyMovement : MonoBehaviour
 
     #region Unity Methods
 
-    // Start is called before the first frame update
     private void Awake()
     {
         enemyRigidBody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         var direction = targetTransform.position - transform.position;
