@@ -42,6 +42,10 @@ GameObject:
   m_Component:
   - component: {fileID: 776883070312361016}
   - component: {fileID: 6640601484063307330}
+  - component: {fileID: 1664873827}
+  - component: {fileID: 1664873830}
+  - component: {fileID: 1664873826}
+  - component: {fileID: 3931612644526310265}
   m_Layer: 0
   m_Name: Ninja_Demo@T-Pose
   m_TagString: Untagged
@@ -75,8 +79,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109172321315190402}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a6e1b293f7ed5584fa548ddde966e03e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bbdf6730bcf0e43708affbedc464dd89, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -86,6 +90,67 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &1664873827
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109172321315190402}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!65 &1664873830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109172321315190402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.81306905, y: 3.037917, z: 0.69944656}
+  m_Center: {x: 0.016493969, y: 1.5284377, z: 0}
+--- !u!114 &1664873826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109172321315190402}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2f321f685dd42d09d812e90b0c3539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 25
+  enemyRigidBody: {fileID: 0}
+  targetTransform: {fileID: 0}
+  smoothTime: 0.1
+--- !u!114 &3931612644526310265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109172321315190402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c489f43ef9d414c9961563b2138ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDefaultLocation: {fileID: 0}
+  enemyManager: {fileID: 0}
+  enemyMovement: {fileID: 0}
+  health: 100
 --- !u!1 &278752737343883120
 GameObject:
   m_ObjectHideFlags: 0
