@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AnimationStateController : MonoBehaviour
+public class PlayerAnimationStateController : MonoBehaviour
 {
     #region Variables
 
