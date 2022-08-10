@@ -12,10 +12,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Collectable
+  - PlayerCollect
+  - DropItems
+  - Player
   - 
   - 
   - 
