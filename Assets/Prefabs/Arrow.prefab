@@ -162,3 +162,4 @@ MonoBehaviour:
   speed: 5
   rotateSpeed: 100
   damage: 10
+  arrowContainer: {fileID: 0}
