@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -9,10 +11,17 @@ public class EnemyManager : MonoBehaviour
     public List<GameObject> enemyList;
     public List<GameObject> spawnPointList;
 
-    public float timeInterval;
+    [Space] public float timeInterval;
     [SerializeField] private float time;
     [SerializeField] private float timeIntervalDecreaseValue = 1;
     [SerializeField] private float minTimeInterval = 1;
+
+    [Space] [SerializeField] private int nextWaveEnemyCount = 10;
+    [SerializeField] private int baseNextWaveEnemyCount = 10;
+    [SerializeField] private int addedEnemyCountToNextWave = 5;
+    [SerializeField] private int waveNumber = 1;
+
+    [Space] public List<GameObject> allEnemies;
 
     #endregion
 
@@ -36,7 +45,19 @@ public class EnemyManager : MonoBehaviour
 
                 lastEnemy.GetComponent<EnemyMovement>().enabled = true;
                 enemyList.Remove(lastEnemy);
-                ChangeTimeInterval();
+
+                if (nextWaveEnemyCount <= 0)
+                {
+                    ChangeTimeInterval();
+                    nextWaveEnemyCount += baseNextWaveEnemyCount + addedEnemyCountToNextWave;
+                    waveNumber++;
+
+                    foreach (var enemy in allEnemies)
+                    {
+                        EnemyHealthManager.IncreaseEnemyMaxHealth(waveNumber);
+                        enemy.GetComponent<EnemyHealthManager>().WaveIncrease();
+                    }
+                }
             }
         }
     }
@@ -55,6 +76,14 @@ public class EnemyManager : MonoBehaviour
 
     public void AddEnemyToList(GameObject enemy)
     {
-        enemyList.Add(enemy);
+        if (enemyList.IndexOf(enemy) == -1)
+        {
+            enemyList.Add(enemy);
+        }
+    }
+
+    public void ReduceNextWaveCount()
+    {
+        nextWaveEnemyCount -= 1;
     }
 }
