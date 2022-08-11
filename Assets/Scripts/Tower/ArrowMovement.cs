@@ -15,6 +15,9 @@ public class ArrowMovement : MonoBehaviour
     private int damage = 10; // remove this use gamemanager arrow damage
     private bool targetReached = false;
 
+    [SerializeField]
+    private GameObject arrowContainer;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -25,14 +28,16 @@ public class ArrowMovement : MonoBehaviour
     {
         target = enemy;
         targetReached = false;
-        StartCoroutine(ArrowPoolCoroutine());
+       
         StartCoroutine(ShootCoroutine());
         damage = GameManager.instance.ArrowDamage;
     }
     private IEnumerator ArrowPoolCoroutine()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(5.0f);
         rigid.velocity = Vector3.zero;
+        rigid.isKinematic = false;
+        transform.SetParent(arrowContainer.transform, false);
         transform.localPosition = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
     }
@@ -46,7 +51,7 @@ public class ArrowMovement : MonoBehaviour
                 if (!targetReached)
                 {
                     //rigid.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position), rotateSpeed * Time.deltaTime);
-                    transform.LookAt(target.transform);
+                    transform.LookAt(target.transform.position);
                     rigid.velocity = transform.forward * speed;
                 }
                 else 
@@ -55,9 +60,14 @@ public class ArrowMovement : MonoBehaviour
                 }
 
                 //remove when collider implemented
-                if (Vector3.Distance(transform.position, target.transform.position) < 1)
+                if (Vector3.Distance(transform.position, target.transform.position) < 0.5f)
                 {
+                    target.GetComponent<EnemyHealthManager>().Damage(damage);
+                    rigid.velocity = Vector3.zero;
+                    rigid.isKinematic = true;
+                    transform.parent = target.transform;
                     targetReached = true;
+                     StartCoroutine(ArrowPoolCoroutine());
                 }
 
                 
