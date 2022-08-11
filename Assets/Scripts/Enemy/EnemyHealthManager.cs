@@ -10,7 +10,7 @@ public class EnemyHealthManager : MonoBehaviour
     [SerializeField] private EnemyMovement enemyMovement;
     
     public int health = 100;
-    private static int EnemyMaxHealth = 100;
+    private static int _enemyMaxHealth = 10;
 
     #endregion
 
@@ -28,6 +28,7 @@ public class EnemyHealthManager : MonoBehaviour
         if (health < 0)
         {
             enemyManager.AddEnemyToList(gameObject);
+            enemyManager.ReduceNextWaveCount();
             SetDefaults();
             enemyMovement.enabled = false;
         }
@@ -46,12 +47,23 @@ public class EnemyHealthManager : MonoBehaviour
     private void SetDefaults()
     {
         transform.position = enemyDefaultLocation.position;
-        health = EnemyMaxHealth;
+        health = _enemyMaxHealth;
     }
 
     public int Damage(int damage)
     {
         health -= damage;
         return health;
+    }
+
+    public static void IncreaseEnemyMaxHealth(int waveCount)
+    {
+        _enemyMaxHealth = waveCount * 10;
+    }
+
+    public void WaveIncrease()
+    {
+        health = _enemyMaxHealth;
+        transform.position = enemyDefaultLocation.position;
     }
 }
