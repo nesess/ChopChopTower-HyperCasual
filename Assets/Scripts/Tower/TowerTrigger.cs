@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TowerTrigger : MonoBehaviour
 {
-    
-
     private void OnTriggerEnter(Collider other)
     {
         GetComponentInParent<TowerAI>().enemyList.Add(other.gameObject);
@@ -15,5 +13,4 @@ public class TowerTrigger : MonoBehaviour
     {
         GetComponentInParent<TowerAI>().enemyList.Remove(other.gameObject);
     }
-
 }
