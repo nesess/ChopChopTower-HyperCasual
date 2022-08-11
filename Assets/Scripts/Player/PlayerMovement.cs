@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _prevTargetAngle = angle;
+
         if(!isCutting)
         {
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
