@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 3931612644526310265}
   m_Layer: 0
   m_Name: Ninja_Demo@T-Pose
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 109172321315190402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.056756742, y: 0.056756742, z: 0.056756742}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 770373528298187569}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2f321f685dd42d09d812e90b0c3539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 20
   enemyRigidBody: {fileID: 0}
   targetTransform: {fileID: 0}
   smoothTime: 0.1
