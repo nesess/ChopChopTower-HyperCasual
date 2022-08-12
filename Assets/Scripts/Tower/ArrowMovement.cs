@@ -28,13 +28,13 @@ public class ArrowMovement : MonoBehaviour
     {
         target = enemy;
         targetReached = false;
-       
+        StartCoroutine(ArrowPoolCoroutine());
         StartCoroutine(ShootCoroutine());
         damage = GameManager.instance.ArrowDamage;
     }
     private IEnumerator ArrowPoolCoroutine()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(2.0f);
         rigid.velocity = Vector3.zero;
         rigid.isKinematic = false;
         transform.SetParent(arrowContainer.transform, false);
@@ -51,7 +51,7 @@ public class ArrowMovement : MonoBehaviour
                 if (!targetReached)
                 {
                     //rigid.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position), rotateSpeed * Time.deltaTime);
-                    transform.LookAt(target.transform.position);
+                    transform.LookAt(target.transform.position + new Vector3(0,1.5f,0));
                     rigid.velocity = transform.forward * speed;
                 }
                 else 
@@ -60,14 +60,14 @@ public class ArrowMovement : MonoBehaviour
                 }
 
                 //remove when collider implemented
-                if (Vector3.Distance(transform.position, target.transform.position) < 0.5f)
+                if (Vector3.Distance(transform.position, target.transform.position + new Vector3(0, 1.5f, 0)) < 0.5f)
                 {
                     target.GetComponent<EnemyHealthManager>().Damage(damage);
                     rigid.velocity = Vector3.zero;
                     rigid.isKinematic = true;
                     transform.parent = target.transform;
                     targetReached = true;
-                     StartCoroutine(ArrowPoolCoroutine());
+                     
                 }
 
                 
