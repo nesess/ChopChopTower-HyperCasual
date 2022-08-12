@@ -61,6 +61,7 @@ public class DropAreaCollect : MonoBehaviour
                 lastObj.transform.DOScale(new Vector3(0, 0, 0), 0.3f)).OnComplete(() =>
                 lastObj.transform.SetParent(logContainer.transform, false));
                 lastObj.GetComponent<Rigidbody>().isKinematic = true;
+                
                 areaObjectCount++;
                 
 

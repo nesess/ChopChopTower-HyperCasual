@@ -6,11 +6,11 @@ public class TowerTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GetComponentInParent<TowerAI>().enemyList.Add(other.gameObject);
+        GetComponent<TowerAI>().enemyList.Add(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        GetComponentInParent<TowerAI>().enemyList.Remove(other.gameObject);
+        GetComponent<TowerAI>().enemyList.Remove(other.gameObject);
     }
 }

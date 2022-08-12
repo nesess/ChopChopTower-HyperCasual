@@ -27,6 +27,7 @@ public class EnemyHealthManager : MonoBehaviour
     {
         if (health < 0)
         {
+            GameManager.instance.AddMoney();
             enemyManager.AddEnemyToList(gameObject);
             enemyManager.ReduceNextWaveCount();
             SetDefaults();

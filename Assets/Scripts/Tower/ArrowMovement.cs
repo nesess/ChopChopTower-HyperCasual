@@ -65,9 +65,18 @@ public class ArrowMovement : MonoBehaviour
                     target.GetComponent<EnemyHealthManager>().Damage(damage);
                     rigid.velocity = Vector3.zero;
                     rigid.isKinematic = true;
-                    transform.parent = target.transform;
+                    transform.SetParent(target.transform,false);
                     targetReached = true;
                      
+                }
+                else if(Vector3.Distance(transform.position, target.transform.position + new Vector3(0, 1.5f, 0)) > 70.5f)
+                {
+                    targetReached = true;
+                    rigid.velocity = Vector3.zero;
+                    rigid.isKinematic = false;
+                    transform.SetParent(arrowContainer.transform, false);
+                    transform.localPosition = Vector3.zero;
+                    transform.localEulerAngles = Vector3.zero;
                 }
 
                 
