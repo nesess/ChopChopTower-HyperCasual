@@ -41,6 +41,7 @@ public class TreeCutArea : MonoBehaviour
         GameObject log = logContainer.transform.GetChild(0).gameObject;
         log.transform.SetParent(this.gameObject.transform, false);
         log.transform.localPosition = new Vector3(0, 4.6f, 0);
+        log.gameObject.GetComponent<BoxCollider>().enabled = true;
         log.GetComponent<Rigidbody>().isKinematic = false;
         log.GetComponent<Rigidbody>().AddForce(throwForce * new Vector3(Random.Range(-0.5f, 0.5f), 1, Random.Range(-1f, -0.5f)));
     }

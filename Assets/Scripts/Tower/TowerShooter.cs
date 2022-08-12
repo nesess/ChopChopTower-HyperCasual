@@ -25,7 +25,7 @@ public class TowerShooter : MonoBehaviour
     {
         while(true)
         {
-            targetEnemy = GetComponentInParent<TowerAI>().nearestEnemy;
+            targetEnemy = GetComponent<TowerAI>().nearestEnemy;
             if(targetEnemy !=null)
             {
 
